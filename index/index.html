@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Claude">
+    <meta name="description" content="A WebChat">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>WebChat</title>
+    <link rel="icon" href="images/icon.png">
+
+    <link rel="stylesheet" href="css/index.css">
+    <!--bootstrap框架-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+</head>
+<body>
+
+<!--bootstrap框架-->
+<script src="js/bootstrap.min.js"></script>
+
+<div class="container chatContainer">
+    <!--Chat Head-->
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-xs-12 header">
+            <h1>WebChat</h1>
+            <strong id="onlineNum">1</strong>
+            <span>people online</span>
+        </div>
+    </div>
+
+    <!--Chat History-->
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 history" id="history">
+            <p class="system"><span class="nickname"></span>欢迎加入了群聊</p>
+            <ul id="messages"></ul>
+        </div>
+    </div>
+
+    <!--Input-->
+    <div class="row ">
+                <div class="col-md-6 col-md-offset-3 col-xs-12 input">
+                    <div class="row inputRow ">
+                    <form action="">
+                        <input id="m" autocomplete="off" />
+                        <button id="send" class="btn-lg btn-primary send">Send</button>
+                    </form>
+        </div>
+    </div>
+
+    <!--Login-->
+    <!--<div id="login" class="login">
+        <p id="loading" class="loading">请登陆...</p>
+        <div id="nickWrapper" class="col-md-3 col-md-offset-3 col-xs-12 nickWrapper">
+            <input type="text" placeholder="What is your nickname?" id="nicknameInput" class="form-control" />
+            <input type="button" class="btn btn-success" id="loginBtn" value="Login" />
+        </div>
+    </div>-->
+</div>
+</div>
+
+<footer>
+    <small>Programmed by Claude</small>
+</footer>
+
+<!--socket.io-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var socket = io();
+            var count = 0;
+            count++;
+            document.getElementById('onlineNum').textContent=count;
+            $('form').submit(function(){
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            });
+            socket.on('chat message', function(msg){
+                $('#messages').append($('<li>').text(msg));
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        });
+    </script>
+</body>
+</html>

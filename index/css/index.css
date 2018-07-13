@@ -1,0 +1,113 @@
+html,body,div,h1,h2,h3,h4,h5,h6,p,span{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+body{
+    padding-top: 10px;
+    overflow: auto;
+    font:13px Helvetica, Arial;
+}
+
+
+.chatContainer{
+    position: relative;
+}
+
+.header{
+    border: 1px solid black;
+    height: 80px;
+    padding-bottom: 90px;
+}
+
+.history{
+    border: 1px solid black;
+    height: 400px;
+    padding: 5px;
+    position: relative;
+    overflow: auto;
+}
+
+.nickname{
+    font-weight: bold;
+}
+
+
+/*系统消息*/
+.system{
+    text-align: center;
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+    opacity: 0.6;
+    margin: 5px 10px;
+}
+
+.input{
+    border: 1px solid black;
+    height: 115px;
+}
+
+.inputRow{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#m{
+    margin-left: 15px;
+    height: 50px !important;
+    width:420px;
+    resize: none;
+}
+
+.send{
+    margin-left: 15px;
+    width:100px;
+}
+
+footer{
+    text-align: center;
+}
+
+.login{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    display: block;
+    background-color: rgba(5,5,5,0.5);
+    padding-top: 200px;
+}
+
+.loading{
+    color: white;
+    font-size: 20px;
+}
+
+.nickWrapper{
+    display: none;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#messages li {
+    padding: 5px 10px;
+}
+
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
+
+
+#messages {
+    margin-bottom: 40px
+}
